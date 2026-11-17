@@ -78,8 +78,8 @@ LogLens/
 │   │   ├── utils/
 │   │   │   └── security.py          # Filename sanitization, secret redaction, validation
 │   │   └── main.py                  # FastAPI application entrypoint & lifespan
-│   ├── tests/                       # Comprehensive pytest suite (19 passing unit tests)
 │   └── requirements.txt             # Backend dependencies
+├── tests/                            # Backend pytest suite
 ├── frontend/
 │   ├── src/
 │   │   ├── components/
@@ -126,8 +126,8 @@ LogLens/
 ### 1. Backend Setup
 ```bash
 # Clone the repository
-git clone https://github.com/placeholder/loglens.git
-cd loglens
+git clone https://github.com/sengardhruvpratapsingh/LogLens.git
+cd LogLens
 
 # Create virtual environment
 python -m venv .venv
@@ -141,13 +141,13 @@ source .venv/bin/activate
 # Install dependencies
 pip install -r backend/requirements.txt
 
-# Run backend test suite
-pytest backend/tests/ -v
+# Run backend test suite from the repository root
+pytest tests/ -v
 
 # Start the FastAPI server
 uvicorn backend.app.main:app --reload --port 8000
 ```
-Backend Swagger API documentation will be available at: `http://localhost:8000/docs`
+The backend API and interactive Swagger documentation are available at `http://localhost:8000` and `http://localhost:8000/docs`.
 
 ### 2. Frontend Setup
 In a new terminal window:
@@ -160,7 +160,7 @@ npm install
 # Start Vite development server
 npm run dev
 ```
-Open your browser at: `http://localhost:5173`
+Open your browser at: `http://localhost:5173`. During local development, Vite proxies `/api` requests to the backend at `http://127.0.0.1:8000`.
 
 ---
 
