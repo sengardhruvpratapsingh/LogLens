@@ -78,8 +78,9 @@ pip install -r backend/requirements.txt
 ### Frontend Dependencies
 ```bash
 cd frontend
-npm install
+npm ci --include=optional
 ```
+Use the committed lockfile for reproducible installs. Rollup's native binaries are optional dependencies selected by npm for the current operating system and architecture; do not add a platform-specific binary package directly to `package.json`.
 
 ---
 
@@ -285,9 +286,9 @@ Recurring errors are grouped through deterministic regex normalization:
 3. **Database Locks in SQLite:**
    - *Cause:* Concurrent write transactions in SQLite.
    - *Solution:* Enabled `check_same_thread: False` and transactional session handling in `session.py`.
-4. **Rollup Native Module Resolution on Windows:**
-   - *Cause:* Native binary package `@rollup/rollup-win32-x64-msvc` missing postinstall link.
-   - *Solution:* Force reinstallation of the specific rollup native package.
+4. **Rollup Native Module Resolution Across Platforms:**
+   - *Cause:* The Windows-only `@rollup/rollup-win32-x64-msvc` package was added as a direct frontend dependency. Render builds on Linux and rejects that package with `EBADPLATFORM`.
+   - *Solution:* Do not install a platform-specific Rollup binary directly. Vite's Rollup dependency declares its native binaries as optional dependencies; keep those entries, including `@rollup/rollup-linux-x64-gnu`, in `frontend/package-lock.json` and install with optional dependencies enabled.
 
 ---
 
@@ -297,6 +298,11 @@ Recurring errors are grouped through deterministic regex normalization:
   - Build command: `npm run build`
   - Output directory: `dist`
   - SPA routing: Configured via `frontend/vercel.json` rewrite rules.
+- **Frontend (Render Static Site):**
+  - Root directory: `frontend`
+  - Build command: `npm install --include=optional && npm run build`
+  - Publish directory: `dist`
+  - Rollup's platform-specific native packages must remain optional in the lockfile; do not add a Windows-only Rollup binary as an application dependency.
 - **Backend (Render):**
   - Environment: Python 3
   - Build command: `pip install -r backend/requirements.txt`
