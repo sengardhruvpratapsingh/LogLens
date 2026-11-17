@@ -1,0 +1,16 @@
+{"timestamp":"2026-11-17T09:00:01.000Z","level":"INFO","message":"Service gateway initialized on port 8080","source":"gateway","service":"api-gateway","trace_id":"trc-9102-aa"}
+{"timestamp":"2026-11-17T09:00:15.120Z","level":"DEBUG","message":"Fetched 45 active feature flags from Consul","source":"config","service":"config-service","trace_id":"trc-9103-ab"}
+{"timestamp":"2026-11-17T09:01:20.450Z","level":"INFO","message":"Authentication succeeded for user uid_8819","source":"auth","service":"auth-service","user_id":"uid_8819","trace_id":"trc-9104-ac"}
+{"timestamp":"2026-11-17T09:02:40.890Z","level":"WARNING","message":"Slow query detected on collection 'analyses': execution time 1850ms","source":"database","service":"data-service","duration_ms":1850}
+{"timestamp":"2026-11-17T09:03:10.220Z","level":"ERROR","message":"External billing service returned 502 Bad Gateway","source":"billing","service":"payment-v2","attempt":1,"trace_id":"trc-9105-ad"}
+{"timestamp":"2026-11-17T09:03:12.800Z","level":"ERROR","message":"External billing service returned 502 Bad Gateway","source":"billing","service":"payment-v2","attempt":2,"trace_id":"trc-9105-ad"}
+{"timestamp":"2026-11-17T09:03:15.300Z","level":"ERROR","message":"External billing service returned 502 Bad Gateway","source":"billing","service":"payment-v2","attempt":3,"trace_id":"trc-9105-ad"}
+{"timestamp":"2026-11-17T09:04:00.100Z","level":"INFO","message":"Batch file processing completed: 150 records indexed","source":"worker","service":"log-indexer","count":150}
+{"timestamp":"2026-11-17T09:05:22.040Z","level":"DEBUG","message":"Cache hit ratio: 94.2% across 12,000 keys","source":"cache","service":"redis-cluster"}
+{"timestamp":"2026-11-17T09:06:50.700Z","level":"CRITICAL","message":"Disk space critically low: 98% occupied on volume /dev/sda1","source":"infra","service":"node-monitor","free_mb":240}
+{"timestamp":"2026-11-17T09:07:14.330Z","level":"WARNING","message":"Upstream API latency 99th percentile exceeded SLA target: 820ms > 500ms","source":"sla-monitor","service":"metrics-aggregator"}
+{"timestamp":"2026-11-17T09:08:00.500Z","level":"INFO","message":"Cluster node rebalance completed successfully","source":"orchestrator","service":"k8s-operator"}
+{"timestamp":"2026-11-17T09:09:18.910Z","level":"ERROR","message":"Kafka consumer group 'log-processors' partition rebalance timeout","source":"messaging","service":"event-bus"}
+{"timestamp":"2026-11-17T09:10:05.110Z","level":"ERROR","message":"External billing service returned 502 Bad Gateway","source":"billing","service":"payment-v2","attempt":1,"trace_id":"trc-9108-ae"}
+{"timestamp":"2026-11-17T09:11:45.000Z","level":"CRITICAL","message":"Certificate expiration notice: TLS cert for api.loglens.internal expires in 48 hours","source":"security","service":"cert-manager"}
+{"timestamp":"2026-11-17T09:12:30.400Z","level":"DEBUG","message":"Health check query executed in 2ms","source":"health","service":"api-gateway"}
